@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Wild Treks - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="logo">Local Wild Treks</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#offers">Offers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Explore Local Famous Spots</h1>
+      <p><h3>Find the best destinations near you.</h3></p>
+      <input type="text" id="search" placeholder="Search destinations..." />
+      <button>Search</button>
+    </div>
+  </section>
+
+  <section class="destinations" id="destinations">
+    <div class="container">
+      <h2>Top Destinations in Hyderabad</h2>
+      <div class="destination-list"></div>
+    </div>
+  </section>
+
+  <section class="offers" id="offers">
+    <div class="container">
+      <h2>Exclusive Offers</h2>
+      <p>Get the best deals on travel and local attractions.</p>
+      <div class="offer-list">
+        <div class="offer">
+          <h3>20% Off on City Tours</h3>
+          <p>Enjoy guided tours at a discounted price.</p>
+        </div>
+        <div class="offer">
+          <h3>Buy 1 Get 1 Free on Local Attractions</h3>
+          <p>Book now and bring a friend for free!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have questions? Reach out to us!</p>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="form-message" class="form-message"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Local Wild Treks. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Booking Modal -->
+  <div id="booking-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Book Your Trip</h2>
+      <label for="transport-select">Select Transport Mode:</label>
+      <select id="transport-select">
+        <option value="">Choose an option</option>
+        <option value="Bus">Bus</option>
+        <option value="Cab">Cab</option>
+        <option value="Bike">Bike</option>
+      </select>
+      <br><br>
+      <button id="pay-now">Pay ₹199</button>
+    </div>
+  </div>
+
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</body>
+</html>
