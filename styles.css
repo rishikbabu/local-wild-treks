@@ -1,0 +1,358 @@
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #ff385c;
+    outline-offset: 2px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ff385c;
+    padding: 15px 8px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: white;
+    color: #ff385c;
+    border-radius: 5px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        background: #ff385c;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: url("https://media.istockphoto.com/id/1369171053/photo/group-of-sporty-people-walks-in-mountains-at-sunset-with-backpacks.jpg?s=1024x1024&w=is&k=20&c=Hhyzpn7CKgY1lICfS57pcdxYipgz7xK2ZLYCRMHT4b0=") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    color: white;
+    text-align: center;
+    padding: 120px 20px 50px;
+}
+
+.hero h1 {
+    color: white;
+    text-shadow: 2px 7px 7px rgb(215, 71, 9);
+    font-weight: bold;
+    font-size: 4.0em;
+}
+
+.hero p {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero input {
+    padding: 23px;
+    width: 350px;
+    border: none;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.hero button {
+    padding: 23px 40px;
+    background: #ff385c;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background: #e02b50;
+}
+
+/* Destination Section */
+.destinations {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.destinations h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.destination-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 1rem;
+    padding: 0 10px 20px;
+    color: #777;
+}
+
+/* Offers Section */
+.offers {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.offer {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Contact Section */
+.contact {
+    max-width: 90%;
+    width: 100%;
+    margin: auto;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background: #ff385c;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact button:hover {
+    background: #e02b50;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    background: #ff385c;
+    color: white;
+    text-align: center;
+}
+/* Map message */
+.cool-map-msg {
+    margin: 10px auto 0;
+    padding: 10px;
+    background: #fff4f8;
+    border-left: 6px solid #ff385c;
+    border-radius: 15px;
+    text-align: center;
+    color: #c72c41;
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cool-map-msg span {
+    color: #ff385c;
+    font-weight: bold;
+}
+
+.card .route-btn {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    background-color: #ff385c;
+    color: #fff;
+    border: none;
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card .route-btn:hover {
+    background-color: #e02b50;
+}
+
+/* Booking Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.modal-content select {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
