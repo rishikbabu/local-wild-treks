@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(modal);
 
-    // Event listeners inside modal
     document.getElementById("cancel-modal").onclick = () => modal.remove();
 
     const seatsInput = modal.querySelector("#seats");
@@ -99,63 +98,61 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Make redirectToTransport global for inline onclick
- window.redirectToTransport = function () {
-  const transport = document.getElementById("transport").value;
-  const time = document.getElementById("time-slot").value;
-  const seats = parseInt(document.getElementById("seats").value) || 1;
+  // Razorpay Payment Handler
+  window.redirectToTransport = function () {
+    const transport = document.getElementById("transport").value;
+    const time = document.getElementById("time-slot").value;
+    const seats = parseInt(document.getElementById("seats").value) || 1;
 
-  if (!transport || !time) {
-    alert("Please select both transport and time slot.");
-    return;
-  }
-
-  const destinationName = document.querySelector(".modal-content h2").textContent.replace("Book Your Trip to ", "");
-  const amountPerSeat = 199;
-  const totalAmount = amountPerSeat * seats;
-
-  const options = {
-    key: "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
-    amount: totalAmount * 100,   // Amount in paise (multiply ₹ by 100)
-    currency: "INR",
-    name: "Local Wild Treks",
-    description: `Booking for ${destinationName}`,
-    image: "https://www.iconpacks.net/icons/2/free-camping-icon-2078-thumb.png", // Optional logo
-    handler: function (response) {
-      const modalContent = document.querySelector(".modal-content");
-      modalContent.innerHTML = `
-        <h3>✅ Payment Successful!</h3>
-        <p>Payment ID: <strong>${response.razorpay_payment_id}</strong></p>
-        <p><strong>Destination:</strong> ${destinationName}</p>
-        <p><strong>Transport:</strong> ${transport.toUpperCase()}</p>
-        <p><strong>Time Slot:</strong> ${time}</p>
-        <p><strong>Seats:</strong> ${seats}</p>
-      `;
-
-      // Optionally, redirect user to partner site after payment confirmation
-      let redirectUrl = "";
-      if (transport === "cab") redirectUrl = "https://www.uber.com/in/en/";
-      else if (transport === "bike") redirectUrl = "https://www.rapido.bike/";
-      else if (transport === "bus") redirectUrl = "https://www.redbus.in/";
-
-      setTimeout(() => {
-        window.open(redirectUrl, "_blank");
-        document.querySelector(".modal-overlay")?.remove();
-      }, 4000);
-    },
-    prefill: {
-      name: "Adventure Seeker",
-      email: "sample@email.com"
-    },
-    theme: {
-      color: "#ff385c"
+    if (!transport || !time) {
+      alert("Please select both transport and time slot.");
+      return;
     }
+
+    const destinationName = document.querySelector(".modal-content h2").textContent.replace("Book Your Trip to ", "");
+    const amountPerSeat = 199;
+    const totalAmount = amountPerSeat * seats;
+
+    const options = {
+      key: "rzp_test_IXdQMlPMelmpvi",  // 🔐 Replace this with your real Razorpay key
+      amount: totalAmount * 100,
+      currency: "INR",
+      name: "Local Wild Treks",
+      description: `Booking for ${destinationName}`,
+      image: "https://www.iconpacks.net/icons/2/free-camping-icon-2078-thumb.png",
+      handler: function (response) {
+        const modalContent = document.querySelector(".modal-content");
+        modalContent.innerHTML = `
+          <h3>✅ Payment Successful!</h3>
+          <p>Payment ID: <strong>${response.razorpay_payment_id}</strong></p>
+          <p><strong>Destination:</strong> ${destinationName}</p>
+          <p><strong>Transport:</strong> ${transport.toUpperCase()}</p>
+          <p><strong>Time Slot:</strong> ${time}</p>
+          <p><strong>Seats:</strong> ${seats}</p>
+        `;
+
+        let redirectUrl = "";
+        if (transport === "cab") redirectUrl = "https://www.uber.com/in/en/";
+        else if (transport === "bike") redirectUrl = "https://www.rapido.bike/";
+        else if (transport === "bus") redirectUrl = "https://www.redbus.in/";
+
+        setTimeout(() => {
+          window.open(redirectUrl, "_blank");
+          document.querySelector(".modal-overlay")?.remove();
+        }, 4000);
+      },
+      prefill: {
+        name: "Adventure Seeker",
+        email: "sample@email.com"
+      },
+      theme: {
+        color: "#ff385c"
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
   };
-
-  const rzp = new Razorpay(options);
-  rzp.open();
-}
-
 
   function searchDestinations() {
     const term = searchInput.value.toLowerCase().trim();
